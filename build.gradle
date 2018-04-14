@@ -62,24 +62,24 @@ publishing {
             }
         }
     }
-    bintray {
-        user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-        key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-        publish = true
+}
 
-        pkg {
-            userOrg = 'HealthPartnersOSS'
-            repo = 'jenkins'
-            name = 'jenkins-shared-library-test-helper'
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+    publish = true
 
-            publications = ['mavenProject']
+    pkg {
+        userOrg = 'healthpartnersoss'
+        repo = 'jenkins'
+        name = 'jenkins-shared-library-test-helper'
 
-            version {
-                name = project.version
-                released = new Date()
-                vcsTag = project.version
-            }
+        publications = ['mavenProject']
+        licenses = ['MIT']
+        version {
+            name = project.version
+            released = new Date()
+            vcsTag = project.version
         }
     }
 }
-
