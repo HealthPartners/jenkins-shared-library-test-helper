@@ -1,6 +1,6 @@
 # Jenkins Shared Library Test Helper
 
-[![Build Status](https://api.travis-ci.org/HealthPartnersOSS/jenkins-shared-library-test-helper.svg?branch=master)](https://travis-ci.org/HealthPartnersOSS/jenkins-shared-library-test-helper/)
+[![Build Status](https://api.travis-ci.org/HealthPartnersOSS/jenkins-shared-library-test-helper.svg?branch=master)](https://travis-ci.org/HealthPartnersOSS/jenkins-shared-library-test-helper/)[![Bintray Version](https://img.shields.io/bintray/v/healthpartnersoss/jenkins/jenkins-shared-library-test-helper.svg)](https://bintray.com/healthpartnersoss/jenkins/jenkins-shared-library-test-helper)
 
 This code was developed to allow [Jenkins 
 shared libraries](https://jenkins.io/doc/book/pipeline/shared-libraries/)
