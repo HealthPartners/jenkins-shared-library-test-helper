@@ -73,7 +73,7 @@ bintray {
         userOrg = 'healthpartnersoss'
         repo = 'jenkins'
         name = 'jenkins-shared-library-test-helper'
-
+        vcsUrl = 'https://github.com/HealthPartnersOSS/jenkins-shared-library-test-helper'
         publications = ['mavenProject']
         licenses = ['MIT']
         version {
