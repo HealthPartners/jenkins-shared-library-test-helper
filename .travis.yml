@@ -8,5 +8,5 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-after_success:
-- "./gradlew bintrayUpload"
+script:
+- "./gradlew check assemble bintrayUpload"
