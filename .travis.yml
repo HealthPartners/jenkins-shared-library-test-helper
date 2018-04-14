@@ -9,7 +9,7 @@ cache:
     - $HOME/.gradle/wrapper/
 
 script:
-- "./gradlew check assemble bintrayUpload"
+- "./gradlew check assemble jacocoTestReport bintrayUpload"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
