@@ -49,6 +49,10 @@ task packageSources(type: Jar) {
     from sourceSets.main.allSource
 }
 
+project.ext {
+    doUpload = false
+}
+
 publishing {
     publications {
         mavenProject(MavenPublication) {
@@ -64,22 +68,24 @@ publishing {
     }
 }
 
-bintray {
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-    publish = true
+if (project.doUpload) {
+    bintray {
+        user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+        key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+        publish = true
 
-    pkg {
-        userOrg = 'healthpartnersoss'
-        repo = 'jenkins'
-        name = 'jenkins-shared-library-test-helper'
-        vcsUrl = 'https://github.com/HealthPartnersOSS/jenkins-shared-library-test-helper'
-        publications = ['mavenProject']
-        licenses = ['MIT']
-        version {
-            name = project.version
-            released = new Date()
-            vcsTag = project.version
+        pkg {
+            userOrg = 'healthpartnersoss'
+            repo = 'jenkins'
+            name = 'jenkins-shared-library-test-helper'
+            vcsUrl = 'https://github.com/HealthPartnersOSS/jenkins-shared-library-test-helper'
+            publications = ['mavenProject']
+            licenses = ['MIT']
+            version {
+                name = project.version
+                released = new Date()
+                vcsTag = project.version
+            }
         }
     }
 }
