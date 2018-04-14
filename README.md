@@ -18,7 +18,7 @@ This library is published to Bintray at https://dl.bintray.com/healthpartnersoss
 maven { url https://dl.bintray.com/healthpartnersoss/jenkins }
 
 dependencies {
-  testCompile 'com.healthpartners.jenkins:jenkins-shared-library-test-helper'
+  testCompile 'com.healthpartners.jenkins:jenkins-shared-library-test-helper:VERSION'
 }
 ```
 
