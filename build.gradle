@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+    }
+}
+
+apply plugin:'groovy'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+group = 'com.healthpartners.jenkins'
+version = '0.1.0-SNAPSHOT'
+
+repositories {
+	mavenCentral()
+}
+
+sourceSets {
+  	main {
+    	java { srcDirs = [] }
+    	groovy { srcDir 'src' }
+  	}
+  	test {
+    	java { srcDirs = [] }
+    	groovy { srcDir 'test' }
+  	}
+}
+
+def groovyVersion = '2.4.15'
+
+dependencies {
+    compile "org.codehaus.groovy:groovy:$groovyVersion"
+    compile "org.spockframework:spock-core:1.1-groovy-2.4"
+}
+
+task wrapper(type:Wrapper) {
+    gradleVersion = '4.6'
+}
+
+task packageSources(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        mavenProject(MavenPublication) {
+            from components.java
+            groupId project.group
+            artifactId project.name
+            version project.version
+
+            artifact packageSources {
+                classifier 'sources'
+            }
+        }
+    }
+    bintray {
+        user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+        key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+        publish = true
+
+        pkg {
+            userOrg = 'HealthPartnersOSS'
+            repo = 'jenkins'
+            name = 'jenkins-shared-library-test-helper'
+
+            publications = ['mavenProject']
+
+            version {
+                name = project.version
+                released = new Date()
+                vcsTag = project.version
+            }
+        }
+    }
+}
+
