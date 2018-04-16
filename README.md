@@ -12,11 +12,13 @@ scripts.
 
 ## Getting Started
 
-This library is published to Bintray at https://dl.bintray.com/healthpartnersoss/jenkins.
+This library is published to JCenter.
 
 ##### Gradle
-```$groovy
-maven { url https://dl.bintray.com/healthpartnersoss/jenkins }
+```groovy
+repositories {
+  jcenter()
+}
 
 dependencies {
   testCompile 'com.healthpartners.jenkins:jenkins-shared-library-test-helper:VERSION'
