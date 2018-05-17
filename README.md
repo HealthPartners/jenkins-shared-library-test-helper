@@ -12,7 +12,11 @@ scripts.
 
 ## Getting Started
 
-This library is published to JCenter.
+### Example
+
+There is an example in the [example-shared-lib-structure](./example-shared-lib-structure) directory, providing you with a basic outline for beginning to write tests for Jenkins scripts. As you can see in the `build.gradle` file, this library is published to JCenter for consumption by any project.
+
+Here is a simple Gradle block that calls out the dependency and loads it for use for tests.
 
 ##### Gradle
 ```groovy

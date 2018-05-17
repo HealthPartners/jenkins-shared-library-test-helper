@@ -1,0 +1,33 @@
+apply plugin:'groovy'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy-all:2.4.15"
+    testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
+    testCompile "com.healthpartners.jenkins:jenkins-shared-library-test-helper:0.1.0"
+}
+
+sourceSets {
+  	main {
+    	java { srcDirs = [] }
+    	groovy {
+			srcDir 'vars'
+			srcDir 'src'
+		}
+  	}
+  	test {
+    	java { srcDirs = [] }
+    	groovy { srcDir 'test' }
+  	}
+}
+
+test {
+	systemProperties System.getProperties()
+}
+
+task wrapper(type:Wrapper) {
+    gradleVersion = '4.7'
+}
