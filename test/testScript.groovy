@@ -1,5 +1,5 @@
 def call() {
-    testMock()
+    "${testMock()}/${env.ENV_VAR}"
 }
 
 return this
